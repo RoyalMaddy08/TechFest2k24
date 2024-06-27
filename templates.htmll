@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Group Accommodation Allocation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Upload Group and Hostel Information</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <label for="groups">Groups CSV:</label>
+        <input type="file" name="groups" id="groups" required><br>
+        <label for="hostels">Hostels CSV:</label>
+        <input type="file" name="hostels" id="hostels" required><br>
+        <button type="submit">Upload and Allocate</button>
+    </form>
+    {% if tables %}
+        <h2>Allocation Result</h2>
+        {{ tables|safe }}
+        <a href="{{ url_for('download_file') }}">Download Allocation CSV</a>
+    {% endif %}
+</body>
+</html>
